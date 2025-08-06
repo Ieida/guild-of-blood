@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://crg0mbqvpc227"]
+
+[ext_resource type="Script" uid="uid://ymv3w2h0v10a" path="res://2d/core/bullet/bullet_2d.gd" id="1_4mfoe"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_4mfoe"]
+radius = 4.0
+height = 32.0
+
+[node name="Bullet2D" type="Node2D"]
+script = ExtResource("1_4mfoe")
+
+[node name="Mesh" type="MeshInstance2D" parent="."]
+modulate = Color(0.2, 0.76, 1, 1)
+rotation = 1.5708
+mesh = SubResource("CapsuleMesh_4mfoe")

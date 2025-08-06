@@ -1,0 +1,55 @@
+[gd_scene load_steps=9 format=3 uid="uid://cf3adykhk662m"]
+
+[ext_resource type="Script" uid="uid://eosbyt53cdon" path="res://2d/nodes/player/player_2d.gd" id="1_p1v1k"]
+[ext_resource type="PackedScene" uid="uid://dgs8cyai8su52" path="res://2d/nodes/follow_camera/follow_camera_2d.tscn" id="2_8i7pm"]
+[ext_resource type="PackedScene" uid="uid://cfhvy0wcf7vjp" path="res://2d/core/hurtbox/hurtbox_2d.tscn" id="2_qbuug"]
+[ext_resource type="Resource" uid="uid://dy8mxs6sj7tt" path="res://data/health/player_health.tres" id="3_qdypo"]
+[ext_resource type="PackedScene" uid="uid://ojejnbl5hnrv" path="res://2d/core/gun/gun_2d.tscn" id="4_qdypo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xltlp"]
+size = Vector2(32, 64)
+
+[sub_resource type="QuadMesh" id="QuadMesh_p1v1k"]
+size = Vector2(32, 64)
+
+[sub_resource type="GDScript" id="GDScript_qbuug"]
+resource_name = "gun_wielder"
+script/source = "extends Node2D
+
+
+@onready var gun: Gun2D = $Gun2D
+
+
+func _physics_process(_delta: float) -> void:
+	if Input.is_action_pressed(&\"shoot\"):
+		gun.press_trigger()
+	else:
+		gun.release_trigger()
+"
+
+[node name="Player2D" type="CharacterBody2D"]
+collision_layer = 2
+script = ExtResource("1_p1v1k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_xltlp")
+
+[node name="FollowCamera2D" parent="." node_paths=PackedStringArray("follow_target") instance=ExtResource("2_8i7pm")]
+top_level = true
+follow_target = NodePath("..")
+
+[node name="Hurtbox2D" parent="." instance=ExtResource("2_qbuug")]
+health = ExtResource("3_qdypo")
+tags = Array[StringName]([&"player"])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox2D"]
+shape = SubResource("RectangleShape2D_xltlp")
+
+[node name="Mesh" type="MeshInstance2D" parent="."]
+mesh = SubResource("QuadMesh_p1v1k")
+
+[node name="GunWielder" type="Node2D" parent="Mesh"]
+script = SubResource("GDScript_qbuug")
+
+[node name="Gun2D" parent="Mesh/GunWielder" instance=ExtResource("4_qdypo")]
+position = Vector2(24, 4)

@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://ojejnbl5hnrv"]
+
+[ext_resource type="Script" uid="uid://cu5xbm3kav7yp" path="res://2d/core/gun/gun_2d.gd" id="1_if01y"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_biq0t"]
+size = Vector2(48, 16)
+
+[node name="Gun2D" type="Node2D" node_paths=PackedStringArray("bullet_fire_point")]
+z_index = 1
+script = ExtResource("1_if01y")
+bullet_fire_point = NodePath("BulletFirePoint")
+
+[node name="Mesh" type="MeshInstance2D" parent="."]
+modulate = Color(0.08, 0.272, 0.4, 1)
+mesh = SubResource("QuadMesh_biq0t")
+
+[node name="Bullets" type="Node2D" parent="."]
+top_level = true
+
+[node name="BulletFirePoint" type="Node2D" parent="."]
+position = Vector2(12, -4)

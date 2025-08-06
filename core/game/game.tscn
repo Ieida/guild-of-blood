@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbt3rgq4qacvg"]
+
+[ext_resource type="Script" uid="uid://caunygglgsxvl" path="res://core/game/game.gd" id="1_23swt"]
+[ext_resource type="PackedScene" uid="uid://cnwh2ow3x0j8r" path="res://2d/levels/prototype/prototype.tscn" id="2_dfm4s"]
+
+[node name="Game" type="Node"]
+script = ExtResource("1_23swt")
+default_level = ExtResource("2_dfm4s")

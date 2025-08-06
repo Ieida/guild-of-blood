@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cfhvy0wcf7vjp"]
+
+[ext_resource type="Script" uid="uid://bsrhome6ntq1n" path="res://2d/core/hurtbox/hurtbox_2d.gd" id="1_l3rua"]
+[ext_resource type="Script" uid="uid://cr78h78gsyfpi" path="res://core/scripts/health.gd" id="2_wytsh"]
+
+[sub_resource type="Resource" id="Resource_74kej"]
+resource_local_to_scene = true
+script = ExtResource("2_wytsh")
+max_points = 0.0
+points = 0.0
+metadata/_custom_type_script = "uid://cr78h78gsyfpi"
+
+[node name="Hurtbox2D" type="Area2D"]
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_l3rua")
+health = SubResource("Resource_74kej")

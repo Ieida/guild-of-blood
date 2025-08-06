@@ -1,0 +1,479 @@
+[gd_scene load_steps=23 format=3 uid="uid://caag2kx17308c"]
+
+[ext_resource type="Texture2D" uid="uid://cck2p5841pgad" path="res://2d/art/gBot_pieces.png" id="1_nkpdl"]
+[ext_resource type="Script" uid="uid://bxg2ba262pavi" path="res://2d/nodes/gd_bot/gd_bot.gd" id="1_uhrm2"]
+
+[sub_resource type="Animation" id="Animation_uhrm2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skeleton2D/Hip/Chest:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(6, -67)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skeleton2D/Hip:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(192, 566)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Skeleton2D/Hip/Chest/LeftArm:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Skeleton2D/Hip/RightLeg:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Skeleton2D/Hip/LeftLeg:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Skeleton2D/Hip/Chest/RightArm:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_nkpdl"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skeleton2D/Hip/Chest:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(6, -57.29), Vector2(6, -67), Vector2(6, -57.29)]
+}
+
+[sub_resource type="Animation" id="Animation_f5yhl"]
+resource_name = "in_air"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skeleton2D/Hip/LeftLeg:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.708604, -0.884882, -0.708604]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skeleton2D/Hip/RightLeg:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.708604, 0.884882, 0.708604]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Skeleton2D/Hip/Chest/RightArm:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.708604, 0.532325, 0.708604]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Skeleton2D/Hip/Chest/LeftArm:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.708604, -0.532325, -0.708604]
+}
+
+[sub_resource type="Animation" id="Animation_mgxid"]
+resource_name = "run"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skeleton2D/Hip:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.5, 0.733333, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(192, 566), Vector2(192, 503.07), Vector2(192, 566), Vector2(192, 503.07), Vector2(192, 566)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skeleton2D/Hip/Chest/LeftArm:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.5, 0.733333, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.708604, 0.0, -0.706858, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Skeleton2D/Hip/RightLeg:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.5, 0.733333, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.708604, 0.0, -0.706858, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Skeleton2D/Hip/LeftLeg:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.5, 0.733333, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.708604, 0.0, 0.708604, 0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Skeleton2D/Hip/Chest/RightArm:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.5, 0.733333, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.708604, 0.0, 0.708604, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_mqjrd"]
+resource_name = "wave"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skeleton2D/Hip/Chest/RightArm:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-2.65465, -3.36325, -2.47837]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f5yhl"]
+_data = {
+&"RESET": SubResource("Animation_uhrm2"),
+&"idle": SubResource("Animation_nkpdl"),
+&"in_air": SubResource("Animation_f5yhl"),
+&"run": SubResource("Animation_mgxid"),
+&"wave": SubResource("Animation_mqjrd")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mgxid"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_uhrm2"]
+animation = &"in_air"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_f5yhl"]
+animation = &"run"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mqjrd"]
+animation = &"wave"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mqjrd"]
+xfade_time = 0.2
+advance_mode = 2
+advance_expression = "is_running == true"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7uww1"]
+xfade_time = 0.2
+advance_mode = 2
+advance_expression = "is_running == false"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6kn8a"]
+xfade_time = 0.3
+advance_mode = 2
+advance_expression = "is_in_air == true"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0jchm"]
+xfade_time = 0.1
+advance_mode = 2
+advance_expression = "is_in_air == false && is_running == true"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4qfg4"]
+xfade_time = 0.3
+advance_mode = 2
+advance_expression = "is_in_air == true"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_o58jk"]
+xfade_time = 0.1
+advance_mode = 2
+advance_expression = "is_in_air == false"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_uhrm2"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_j61nc"]
+xfade_time = 0.5
+advance_mode = 2
+advance_expression = "is_waving == true"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_c4qa4"]
+xfade_time = 0.5
+advance_mode = 2
+advance_expression = "is_waving == false"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_nkpdl"]
+states/idle/node = SubResource("AnimationNodeAnimation_mgxid")
+states/idle/position = Vector2(346, 100)
+states/in_air/node = SubResource("AnimationNodeAnimation_uhrm2")
+states/in_air/position = Vector2(456, 169)
+states/run/node = SubResource("AnimationNodeAnimation_f5yhl")
+states/run/position = Vector2(456, 36)
+states/wave/node = SubResource("AnimationNodeAnimation_mqjrd")
+states/wave/position = Vector2(346, 248)
+transitions = ["idle", "run", SubResource("AnimationNodeStateMachineTransition_mqjrd"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_7uww1"), "run", "in_air", SubResource("AnimationNodeStateMachineTransition_6kn8a"), "in_air", "run", SubResource("AnimationNodeStateMachineTransition_0jchm"), "idle", "in_air", SubResource("AnimationNodeStateMachineTransition_4qfg4"), "in_air", "idle", SubResource("AnimationNodeStateMachineTransition_o58jk"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_uhrm2"), "idle", "wave", SubResource("AnimationNodeStateMachineTransition_j61nc"), "wave", "idle", SubResource("AnimationNodeStateMachineTransition_c4qa4")]
+graph_offset = Vector2(-103, 62)
+
+[node name="GDBot" type="Node2D"]
+script = ExtResource("1_uhrm2")
+
+[node name="Polygons" type="Node2D" parent="."]
+position = Vector2(-200, -494)
+
+[node name="LeftArm" type="Polygon2D" parent="Polygons"]
+position = Vector2(184, 288)
+texture = ExtResource("1_nkpdl")
+skeleton = NodePath("../../Skeleton2D")
+polygon = PackedVector2Array(36.7332, 23.472, 90.6913, 9.81174, 144.649, 43.2794, 102.303, 182.614, 139.868, 308.972, 129.623, 350.636, 69.5179, 371.809, 27.171, 341.073, 10.7787, 209.252, 18.2918, 188.761, 12.8277, 153.928)
+uv = PackedVector2Array(176.434, 43.0744, 230.92, 18.1016, 280.866, 51.3987, 252.139, 187.911, 292.974, 305.667, 280.866, 346.532, 222.596, 362.423, 194.596, 338.964, 169.623, 217.884, 178.704, 195.938, 174.164, 171.722)
+bones = ["Hip", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/Chest", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/Chest/Neck", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/Chest/Neck/Head", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/Chest/Neck/Head/Jaw", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/Chest/LeftArm", PackedFloat32Array(1, 1, 1, 0.47, 0, 0, 0, 0, 0, 0.47, 0.47), "Hip/Chest/LeftArm/LeftElbow", PackedFloat32Array(0, 0, 0, 0.47, 0.52, 0, 0, 0.52, 0.47, 0.47, 0), "Hip/Chest/LeftArm/LeftElbow/LeftHand", PackedFloat32Array(0, 0, 0, 0, 0.52, 1, 1, 0.52, 0, 0, 0), "Hip/Chest/RightArm", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/Chest/RightArm/RightElbow", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/Chest/RightArm/RightElbow/RightHand", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/LeftLeg", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/LeftLeg/LeftKnee", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/LeftLeg/LeftKnee/LeftFoot", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/RightLeg", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/RightLeg/RightKnee", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/RightLeg/RightKnee/RightFoot", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)]
+
+[node name="LeftLeg" type="Polygon2D" parent="Polygons"]
+position = Vector2(133, 131)
+texture = ExtResource("1_nkpdl")
+skeleton = NodePath("../../Skeleton2D")
+polygon = PackedVector2Array(58.3124, 376.707, 132.482, 387.695, 125.156, 511.31, 179.181, 609.287, 187.422, 686.203, 14.3603, 687.119, 25.3483, 611.118, 20.77, 510.395, 49.1557, 463.696)
+uv = PackedVector2Array(279.904, 380.736, 354.073, 391.724, 348.579, 533.653, 409.014, 633.461, 411.761, 696.642, 235.952, 692.979, 246.94, 615.147, 242.362, 514.424, 270.748, 467.725)
+bones = ["Hip", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/Chest", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/Chest/Neck", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/Chest/Neck/Head", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/Chest/Neck/Head/Jaw", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/Chest/LeftArm", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/Chest/LeftArm/LeftElbow", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/Chest/LeftArm/LeftElbow/LeftHand", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/Chest/RightArm", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/Chest/RightArm/RightElbow", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/Chest/RightArm/RightElbow/RightHand", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/LeftLeg", PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1), "Hip/LeftLeg/LeftKnee", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/LeftLeg/LeftKnee/LeftFoot", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/RightLeg", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/RightLeg/RightKnee", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/RightLeg/RightKnee/RightFoot", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0)]
+
+[node name="Torso" type="Polygon2D" parent="Polygons"]
+position = Vector2(-229, 238)
+texture = ExtResource("1_nkpdl")
+skeleton = NodePath("../../Skeleton2D")
+polygon = PackedVector2Array(430.097, 9.18987, 371.071, 48.5409, 327.936, 122.703, 344.584, 229.404, 334.746, 307.35, 391.503, 353.512, 455.07, 355.025, 503.502, 310.377, 495.178, 249.08, 545.88, 164.324, 502.745, 77.2975, 473.232, 7.67636)
+uv = PackedVector2Array(400.584, 16.0006, 371.827, 69.73, 329.449, 133.297, 349.125, 238.485, 334.746, 307.35, 391.503, 353.512, 455.07, 355.025, 498.962, 313.404, 490.637, 253.62, 533.015, 177.189, 495.935, 84.1082, 477.772, 15.2439)
+bones = ["Hip", PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1), "Hip/Chest", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/Chest/Neck", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/Chest/Neck/Head", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/Chest/Neck/Head/Jaw", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/Chest/LeftArm", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/Chest/LeftArm/LeftElbow", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/Chest/LeftArm/LeftElbow/LeftHand", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/Chest/RightArm", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/Chest/RightArm/RightElbow", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/Chest/RightArm/RightElbow/RightHand", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/LeftLeg", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/LeftLeg/LeftKnee", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/LeftLeg/LeftKnee/LeftFoot", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/RightLeg", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/RightLeg/RightKnee", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/RightLeg/RightKnee/RightFoot", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)]
+
+[node name="RightLeg" type="Polygon2D" parent="Polygons"]
+position = Vector2(48, 134)
+texture = ExtResource("1_nkpdl")
+skeleton = NodePath("../../Skeleton2D")
+polygon = PackedVector2Array(58.3124, 376.707, 132.482, 387.695, 125.156, 511.31, 179.181, 609.287, 187.422, 686.203, 14.3603, 687.119, 25.3483, 611.118, 20.77, 510.395, 49.1557, 463.696)
+uv = PackedVector2Array(58.3124, 376.707, 132.482, 387.695, 126.988, 529.624, 187.422, 629.432, 190.169, 692.613, 14.3603, 688.95, 25.3483, 611.118, 20.77, 510.395, 49.1557, 463.696)
+bones = ["Hip", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/Chest", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/Chest/Neck", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/Chest/Neck/Head", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/Chest/Neck/Head/Jaw", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/Chest/LeftArm", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/Chest/LeftArm/LeftElbow", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/Chest/LeftArm/LeftElbow/LeftHand", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/Chest/RightArm", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/Chest/RightArm/RightElbow", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/Chest/RightArm/RightElbow/RightHand", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/LeftLeg", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/LeftLeg/LeftKnee", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/LeftLeg/LeftKnee/LeftFoot", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/RightLeg", PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1), "Hip/RightLeg/RightKnee", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/RightLeg/RightKnee/RightFoot", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0)]
+
+[node name="Head" type="Polygon2D" parent="Polygons"]
+position = Vector2(-476.18, -248.586)
+texture = ExtResource("1_nkpdl")
+skeleton = NodePath("../../Skeleton2D")
+polygon = PackedVector2Array(555.947, 246.774, 676.815, 220.586, 794.662, 276.991, 847.038, 394.838, 835.959, 506.641, 795.669, 535.851, 658.685, 540.887, 482.419, 527.793, 449.18, 400.881)
+uv = PackedVector2Array(528.752, 273.969, 656.671, 215.55, 779.553, 257.854, 842.002, 387.787, 813.799, 532.829, 729.192, 541.894, 590.193, 542.901, 462.274, 512.684, 449.18, 400.881)
+bones = ["Hip", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/Chest", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/Chest/Neck", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/Chest/Neck/Head", PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1), "Hip/Chest/Neck/Head/Jaw", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/Chest/LeftArm", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/Chest/LeftArm/LeftElbow", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/Chest/LeftArm/LeftElbow/LeftHand", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/Chest/RightArm", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/Chest/RightArm/RightElbow", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/Chest/RightArm/RightElbow/RightHand", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/LeftLeg", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/LeftLeg/LeftKnee", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/LeftLeg/LeftKnee/LeftFoot", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/RightLeg", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/RightLeg/RightKnee", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/RightLeg/RightKnee/RightFoot", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0)]
+
+[node name="Jaw" type="Polygon2D" parent="Polygons"]
+position = Vector2(-439.18, -337.586)
+texture = ExtResource("1_nkpdl")
+skeleton = NodePath("../../Skeleton2D")
+polygon = PackedVector2Array(473.654, 562.282, 814.099, 555.232, 820.143, 613.651, 795.969, 666.028, 715.39, 693.223, 555.24, 692.216, 484.733, 660.991)
+uv = PackedVector2Array(473.654, 562.282, 827.193, 557.246, 828.201, 636.818, 774.817, 686.172, 670.065, 702.288, 547.182, 697.252, 480.704, 641.854)
+bones = ["Hip", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0), "Hip/Chest", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0), "Hip/Chest/Neck", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0), "Hip/Chest/Neck/Head", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0), "Hip/Chest/Neck/Head/Jaw", PackedFloat32Array(1, 1, 1, 1, 1, 1, 1), "Hip/Chest/LeftArm", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0), "Hip/Chest/LeftArm/LeftElbow", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0), "Hip/Chest/LeftArm/LeftElbow/LeftHand", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0), "Hip/Chest/RightArm", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0), "Hip/Chest/RightArm/RightElbow", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0), "Hip/Chest/RightArm/RightElbow/RightHand", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0), "Hip/LeftLeg", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0), "Hip/LeftLeg/LeftKnee", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0), "Hip/LeftLeg/LeftKnee/LeftFoot", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0), "Hip/RightLeg", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0), "Hip/RightLeg/RightKnee", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0), "Hip/RightLeg/RightKnee/RightFoot", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)]
+
+[node name="RightArm" type="Polygon2D" parent="Polygons"]
+position = Vector2(41, 284)
+texture = ExtResource("1_nkpdl")
+skeleton = NodePath("../../Skeleton2D")
+polygon = PackedVector2Array(36.7332, 23.472, 90.6913, 9.81174, 144.649, 43.2794, 102.303, 182.614, 139.868, 308.972, 129.623, 350.636, 69.5179, 371.809, 27.171, 341.073, 10.7787, 209.252, 18.2918, 188.761, 12.8277, 153.928)
+uv = PackedVector2Array(36.7332, 23.472, 90.6913, 9.81174, 144.649, 43.2794, 102.303, 182.614, 139.868, 308.972, 129.623, 350.636, 69.5179, 371.809, 27.171, 341.073, 10.7787, 209.252, 18.2918, 188.761, 12.8277, 153.928)
+bones = ["Hip", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/Chest", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/Chest/Neck", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/Chest/Neck/Head", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/Chest/Neck/Head/Jaw", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/Chest/LeftArm", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/Chest/LeftArm/LeftElbow", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/Chest/LeftArm/LeftElbow/LeftHand", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/Chest/RightArm", PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1), "Hip/Chest/RightArm/RightElbow", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/Chest/RightArm/RightElbow/RightHand", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/LeftLeg", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/LeftLeg/LeftKnee", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/LeftLeg/LeftKnee/LeftFoot", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/RightLeg", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/RightLeg/RightKnee", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Hip/RightLeg/RightKnee/RightFoot", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)]
+
+[node name="Skeleton2D" type="Skeleton2D" parent="."]
+position = Vector2(-200, -494)
+
+[node name="Hip" type="Bone2D" parent="Skeleton2D"]
+position = Vector2(192, 566)
+rest = Transform2D(1, 0, 0, 1, 192, 566)
+editor_settings/show_bone_gizmo = false
+
+[node name="Chest" type="Bone2D" parent="Skeleton2D/Hip"]
+position = Vector2(6, -67)
+rest = Transform2D(1, 0, 0, 1, 6, -67)
+editor_settings/show_bone_gizmo = false
+
+[node name="Neck" type="Bone2D" parent="Skeleton2D/Hip/Chest"]
+position = Vector2(-1, -162)
+rest = Transform2D(1, 0, 0, 1, -1, -162)
+editor_settings/show_bone_gizmo = false
+
+[node name="Head" type="Bone2D" parent="Skeleton2D/Hip/Chest/Neck"]
+position = Vector2(-8, -66)
+rest = Transform2D(1, 0, 0, 1, -8, -66)
+editor_settings/show_bone_gizmo = false
+
+[node name="Jaw" type="Bone2D" parent="Skeleton2D/Hip/Chest/Neck/Head"]
+position = Vector2(-75, 30)
+rest = Transform2D(1, 0, 0, 1, -75, 30)
+auto_calculate_length_and_angle = false
+length = 209.54
+bone_angle = -6.486
+editor_settings/show_bone_gizmo = false
+
+[node name="LeftArm" type="Bone2D" parent="Skeleton2D/Hip/Chest"]
+position = Vector2(71, -130)
+rest = Transform2D(1, 0, 0, 1, 71, -130)
+editor_settings/show_bone_gizmo = false
+
+[node name="LeftElbow" type="Bone2D" parent="Skeleton2D/Hip/Chest/LeftArm"]
+position = Vector2(-23, 105)
+rest = Transform2D(1, 0, 0, 1, -23, 105)
+editor_settings/show_bone_gizmo = false
+
+[node name="LeftHand" type="Bone2D" parent="Skeleton2D/Hip/Chest/LeftArm/LeftElbow"]
+position = Vector2(11, 98)
+rest = Transform2D(1, 0, 0, 1, 11, 98)
+auto_calculate_length_and_angle = false
+length = 52.865
+bone_angle = 71.352
+editor_settings/show_bone_gizmo = false
+
+[node name="RightArm" type="Bone2D" parent="Skeleton2D/Hip/Chest"]
+position = Vector2(-75, -126)
+rest = Transform2D(1, 0, 0, 1, -75, -126)
+editor_settings/show_bone_gizmo = false
+
+[node name="RightElbow" type="Bone2D" parent="Skeleton2D/Hip/Chest/RightArm"]
+position = Vector2(-16, 98)
+rest = Transform2D(1, 0, 0, 1, -16, 98)
+editor_settings/show_bone_gizmo = false
+
+[node name="RightHand" type="Bone2D" parent="Skeleton2D/Hip/Chest/RightArm/RightElbow"]
+position = Vector2(8, 117)
+rest = Transform2D(1, 0, 0, 1, 8, 117)
+auto_calculate_length_and_angle = false
+length = 43.649
+bone_angle = 71.352
+editor_settings/show_bone_gizmo = false
+
+[node name="LeftLeg" type="Bone2D" parent="Skeleton2D/Hip"]
+position = Vector2(29, -16)
+rest = Transform2D(1, 0, 0, 1, 29, -16)
+editor_settings/show_bone_gizmo = false
+
+[node name="LeftKnee" type="Bone2D" parent="Skeleton2D/Hip/LeftLeg"]
+position = Vector2(-14, 84)
+rest = Transform2D(1, 0, 0, 1, -14, 84)
+editor_settings/show_bone_gizmo = false
+
+[node name="LeftFoot" type="Bone2D" parent="Skeleton2D/Hip/LeftLeg/LeftKnee"]
+position = Vector2(-13, 131)
+rest = Transform2D(1, 0, 0, 1, -13, 131)
+auto_calculate_length_and_angle = false
+length = 71.298
+bone_angle = 0.0
+editor_settings/show_bone_gizmo = false
+
+[node name="RightLeg" type="Bone2D" parent="Skeleton2D/Hip"]
+position = Vector2(-55, -16)
+rest = Transform2D(1, 0, 0, 1, -55, -16)
+editor_settings/show_bone_gizmo = false
+
+[node name="RightKnee" type="Bone2D" parent="Skeleton2D/Hip/RightLeg"]
+position = Vector2(-15, 94)
+rest = Transform2D(1, 0, 0, 1, -15, 94)
+editor_settings/show_bone_gizmo = false
+
+[node name="RightFoot" type="Bone2D" parent="Skeleton2D/Hip/RightLeg/RightKnee"]
+position = Vector2(-8, 123)
+rest = Transform2D(1, 0, 0, 1, -8, 123)
+auto_calculate_length_and_angle = false
+length = 62.081
+bone_angle = 0.0
+editor_settings/show_bone_gizmo = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_f5yhl")
+}
+autoplay = "idle"
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_nkpdl")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../AnimationPlayer")

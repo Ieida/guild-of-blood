@@ -1,0 +1,95 @@
+[gd_scene load_steps=21 format=3 uid="uid://s40v113gcf3e"]
+
+[ext_resource type="Script" uid="uid://5hq4mq3fduhb" path="res://2d/core/enemy/enemy_2d.gd" id="1_6uej2"]
+[ext_resource type="PackedScene" uid="uid://cfhvy0wcf7vjp" path="res://2d/core/hurtbox/hurtbox_2d.tscn" id="2_km2mr"]
+[ext_resource type="Script" uid="uid://dnxtbvhmuuo3c" path="res://core/scripts/state_machine.gd" id="2_wpea4"]
+[ext_resource type="Script" uid="uid://rl13pfkc2x4u" path="res://core/scripts/state.gd" id="3_1l2mt"]
+[ext_resource type="Script" uid="uid://cr78h78gsyfpi" path="res://core/scripts/health.gd" id="3_x4vt3"]
+[ext_resource type="Script" uid="uid://coh1hf2qw8v3m" path="res://2d/core/enemy/states/idle.gd" id="4_1l2mt"]
+[ext_resource type="PackedScene" uid="uid://bw7i7kbcrmoj7" path="res://2d/core/hitbox/hitbox_2d.tscn" id="4_kiqra"]
+[ext_resource type="Script" uid="uid://djgq3pop1uygr" path="res://2d/core/enemy/states/chase.gd" id="5_68wph"]
+[ext_resource type="Script" uid="uid://dvvejqb1syxl7" path="res://2d/core/enemy/states/attack.gd" id="6_j8syg"]
+[ext_resource type="Script" uid="uid://opii8bib3yra" path="res://2d/core/enemy/states/run.gd" id="7_kqo4x"]
+[ext_resource type="Script" uid="uid://c0kpba4gkvv3b" path="res://2d/core/enemy/states/die.gd" id="8_qpd5a"]
+
+[sub_resource type="Resource" id="Resource_qpd5a"]
+script = ExtResource("6_j8syg")
+priority = 2
+metadata/_custom_type_script = "uid://dvvejqb1syxl7"
+
+[sub_resource type="Resource" id="Resource_kqo4x"]
+script = ExtResource("5_68wph")
+stop_distance = 128.0
+priority = 1
+metadata/_custom_type_script = "uid://djgq3pop1uygr"
+
+[sub_resource type="Resource" id="Resource_j8syg"]
+script = ExtResource("4_1l2mt")
+priority = 0
+metadata/_custom_type_script = "uid://coh1hf2qw8v3m"
+
+[sub_resource type="Resource" id="Resource_pikec"]
+script = ExtResource("7_kqo4x")
+distance = 128.0
+priority = 1
+metadata/_custom_type_script = "uid://opii8bib3yra"
+
+[sub_resource type="Resource" id="Resource_h22sm"]
+script = ExtResource("8_qpd5a")
+priority = 3
+metadata/_custom_type_script = "uid://c0kpba4gkvv3b"
+
+[sub_resource type="Resource" id="Resource_68wph"]
+script = ExtResource("2_wpea4")
+props = Dictionary[StringName, Variant]({
+&"is_attack_on_cd": false
+})
+states = Dictionary[StringName, ExtResource("3_1l2mt")]({
+&"attack": SubResource("Resource_qpd5a"),
+&"chase": SubResource("Resource_kqo4x"),
+&"die": SubResource("Resource_h22sm"),
+&"idle": SubResource("Resource_j8syg"),
+&"run": SubResource("Resource_pikec")
+})
+priority = 0
+metadata/_custom_type_script = "uid://dnxtbvhmuuo3c"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lup2p"]
+size = Vector2(24, 24)
+
+[sub_resource type="Resource" id="Resource_x4vt3"]
+resource_local_to_scene = true
+script = ExtResource("3_x4vt3")
+max_points = 100.0
+points = 100.0
+metadata/_custom_type_script = "uid://cr78h78gsyfpi"
+
+[sub_resource type="QuadMesh" id="QuadMesh_6uej2"]
+size = Vector2(24, 24)
+
+[node name="Enemy2D" type="CharacterBody2D"]
+z_index = 1
+collision_layer = 2
+script = ExtResource("1_6uej2")
+state_machine = SubResource("Resource_68wph")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_lup2p")
+
+[node name="Hurtbox2D" parent="." instance=ExtResource("2_km2mr")]
+health = SubResource("Resource_x4vt3")
+tags = Array[StringName]([&"enemy"])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox2D"]
+shape = SubResource("RectangleShape2D_lup2p")
+
+[node name="Hitbox2D" parent="." instance=ExtResource("4_kiqra")]
+active = false
+target_tags = Array[StringName]([&"player"])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox2D"]
+shape = SubResource("RectangleShape2D_lup2p")
+
+[node name="Mesh" type="MeshInstance2D" parent="."]
+modulate = Color(0.5, 0.125, 0.125, 1)
+mesh = SubResource("QuadMesh_6uej2")
