@@ -7,5 +7,11 @@ script = ExtResource("1_28uv5")
 
 [node name="Nodes" type="Node2D" parent="."]
 
+[node name="Spawners" type="Node2D" parent="Nodes"]
+
+[node name="Enemies" type="Node2D" parent="Nodes"]
+
+[node name="Drops" type="Node2D" parent="Nodes"]
+
 [node name="UI" type="CanvasLayer" parent="."]
 layer = 128

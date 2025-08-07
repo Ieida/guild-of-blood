@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://p5iqg6en47hd"]
+
+[ext_resource type="Script" uid="uid://bmpasrbeyhskp" path="res://2d/core/drop_spawner/drop_spawner_2d.gd" id="1_bcvxc"]
+[ext_resource type="PackedScene" uid="uid://b88kivl1j87ay" path="res://2d/core/drop/drop_2d.tscn" id="2_xy45m"]
+
+[node name="DropSpawner2D" type="Node2D"]
+script = ExtResource("1_bcvxc")
+drop_scene = ExtResource("2_xy45m")

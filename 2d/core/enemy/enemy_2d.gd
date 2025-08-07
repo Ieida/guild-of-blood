@@ -1,6 +1,7 @@
 class_name Enemy2D extends CharacterBody2D
 
 
+signal died
 signal landed
 
 
@@ -14,8 +15,12 @@ signal landed
 @onready var hitbox: Hitbox2D = $Hitbox2D
 @onready var hurtbox: Hurtbox2D = $Hurtbox2D
 @onready var mesh: MeshInstance2D = $Mesh
-@onready var target: Player2D = get_node(^"../Player2D")
+@onready var target: Player2D = get_node(^"../../Player2D")
 var attack_cooldown_start_time: float
+
+
+func _on_health_depleted():
+	died.emit()
 
 
 func _on_health_reduced():
@@ -46,3 +51,4 @@ func _process(delta: float) -> void:
 
 func _ready() -> void:
 	hurtbox.health.reduced.connect(_on_health_reduced)
+	hurtbox.health.depleted.connect(_on_health_depleted)
