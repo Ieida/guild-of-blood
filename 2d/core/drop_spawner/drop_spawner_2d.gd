@@ -1,7 +1,7 @@
 class_name DropSpawner2D extends Node2D
 
 
-@export var amount: int = 10.
+@export var amount: int = 10
 @export var drop_scene: PackedScene
 @onready var game: Game = get_node(^"/root/Game")
 

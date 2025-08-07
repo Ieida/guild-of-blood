@@ -17,7 +17,7 @@ func evaluate() -> bool:
 	return true
 
 
-func run(delta: float):
+func run(_delta: float):
 	var et: float = GameUtils.time - start_time
 	var etp: float = clampf(et / 1., 0., 1.)
 	root.mesh.modulate = start_color.lerp(Color.TRANSPARENT, etp)
