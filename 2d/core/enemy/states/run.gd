@@ -4,20 +4,12 @@ class_name EnemyStateRun extends State
 @export var distance: float = 128.
 
 
-func enter():
-	print("enemy entered run state")
-
-
 func evaluate() -> bool:
 	if not root.target: return false
 	if not machine.gep(&"is_attack_on_cd"): return false
 	var diff: Vector2 = root.target.global_position - root.global_position
 	if absf(diff.x) > distance: return false
 	return true
-
-
-func exit():
-	print("enemy exited run state")
 
 
 func run_physics(delta: float):

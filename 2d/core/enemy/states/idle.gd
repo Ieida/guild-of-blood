@@ -1,16 +1,8 @@
 class_name EnemyStateIdle extends State
 
 
-func enter():
-	print("enemy entered idle state")
-
-
 func evaluate() -> bool:
 	return true
-
-
-func exit():
-	print("enemy exited idle state")
 
 
 func run_physics(delta: float):
@@ -18,7 +10,3 @@ func run_physics(delta: float):
 		root.velocity.x = move_toward(
 			root.velocity.x, 0., root.deceleration * delta
 		)
-
-
-func start():
-	pass

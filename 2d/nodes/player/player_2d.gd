@@ -12,7 +12,6 @@ var modulate_tween: Tween
 
 
 func _on_health_reduced():
-	print("player hurt, health: %s" % hurtbox.health.points)
 	if modulate_tween: modulate_tween.stop()
 	modulate = Color.WHITE
 	modulate_tween = create_tween()

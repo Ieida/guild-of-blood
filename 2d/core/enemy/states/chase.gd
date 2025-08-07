@@ -4,18 +4,10 @@ class_name EnemyStateChase extends State
 @export var stop_distance: float = 128.
 
 
-func enter():
-	print("enemy entered chase state")
-
-
 func evaluate() -> bool:
 	if not root.target: return false
 	if machine.gep(&"is_attack_on_cd"): return false
 	return true
-
-
-func exit():
-	print("enemy exited chase state")
 
 
 func run_physics(delta: float):
@@ -26,7 +18,3 @@ func run_physics(delta: float):
 	root.velocity.x = move_toward(
 		root.velocity.x, dir * root.speed, root.acceleration * delta
 	)
-
-
-func start():
-	pass

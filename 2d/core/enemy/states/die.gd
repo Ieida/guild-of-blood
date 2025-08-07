@@ -1,12 +1,15 @@
 class_name EnemyStateDie extends State
 
 
+var start_color: Color
+var start_time: float
+
+
 func enter():
-	print("enemy entered die state")
-
-
-func exit():
-	print("enemy exited die state")
+	start_color = root.mesh.modulate
+	start_time = GameUtils.time
+	root.velocity = Vector2.ZERO
+	root.hurtbox.process_mode = Node.PROCESS_MODE_DISABLED
 
 
 func evaluate() -> bool:
@@ -15,9 +18,8 @@ func evaluate() -> bool:
 
 
 func run(delta: float):
-	root.mesh.scale = root.mesh.scale.move_toward(
-		Vector2.ONE * 0.1,
-		delta
-	)
-	if root.mesh.scale.length() <= 0.2:
+	var et: float = GameUtils.time - start_time
+	var etp: float = clampf(et / 1., 0., 1.)
+	root.mesh.modulate = start_color.lerp(Color.TRANSPARENT, etp)
+	if is_equal_approx(etp, 1.):
 		root.queue_free()

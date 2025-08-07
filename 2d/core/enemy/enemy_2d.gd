@@ -17,6 +17,7 @@ signal landed
 @onready var mesh: MeshInstance2D = $Mesh
 @onready var target: Player2D = get_node(^"../../Player2D")
 var attack_cooldown_start_time: float
+var can_move: bool = true
 
 
 func _on_health_depleted():
@@ -24,7 +25,7 @@ func _on_health_depleted():
 
 
 func _on_health_reduced():
-	print("Enemy health reduced, health: %s" % hurtbox.health.points)
+	pass
 
 
 func _enter_tree() -> void:
@@ -33,6 +34,7 @@ func _enter_tree() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if not can_move: return
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	state_machine.run_physics(delta)

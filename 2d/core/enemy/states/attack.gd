@@ -26,7 +26,6 @@ func enter():
 		var d: float = 1.0 if tpos.x > rpos.x else -1.0
 		root.velocity.x = d * lunge_velocity_x
 	root.hitbox.active = true
-	print("enemy entered attack state")
 
 
 func evaluate() -> bool:
@@ -40,7 +39,6 @@ func evaluate() -> bool:
 
 func exit():
 	root.hitbox.active = false
-	print("enemy exited attack state")
 
 
 func run_physics(delta: float):

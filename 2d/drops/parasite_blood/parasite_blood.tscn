@@ -6,4 +6,4 @@
 attractor_tags = Array[StringName]([&"player"])
 
 [node name="Mesh" parent="." index="1"]
-modulate = Color(0.125, 0.5, 0.33125, 1)
+modulate = Color(0, 1, 0.283333, 1)
