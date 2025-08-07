@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://cf3adykhk662m"]
+[gd_scene load_steps=10 format=3 uid="uid://cf3adykhk662m"]
 
 [ext_resource type="Script" uid="uid://eosbyt53cdon" path="res://2d/nodes/player/player_2d.gd" id="1_p1v1k"]
 [ext_resource type="PackedScene" uid="uid://dgs8cyai8su52" path="res://2d/nodes/follow_camera/follow_camera_2d.tscn" id="2_8i7pm"]
 [ext_resource type="PackedScene" uid="uid://cfhvy0wcf7vjp" path="res://2d/core/hurtbox/hurtbox_2d.tscn" id="2_qbuug"]
 [ext_resource type="Resource" uid="uid://dy8mxs6sj7tt" path="res://data/health/player_health.tres" id="3_qdypo"]
 [ext_resource type="PackedScene" uid="uid://ojejnbl5hnrv" path="res://2d/core/gun/gun_2d.tscn" id="4_qdypo"]
+[ext_resource type="PackedScene" uid="uid://dgxrxfkv82cxb" path="res://2d/core/blood_collector/blood_collector_2d.tscn" id="5_ve4yu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xltlp"]
 size = Vector2(32, 64)
@@ -45,6 +46,12 @@ tags = Array[StringName]([&"player"])
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox2D"]
 shape = SubResource("RectangleShape2D_xltlp")
 
+[node name="BloodCollector2D" parent="." node_paths=PackedStringArray("ui") instance=ExtResource("5_ve4yu")]
+ui = NodePath("../UI/MarginContainer/HBoxContainer/BloodCount")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BloodCollector2D"]
+shape = SubResource("RectangleShape2D_xltlp")
+
 [node name="Mesh" type="MeshInstance2D" parent="."]
 mesh = SubResource("QuadMesh_p1v1k")
 
@@ -53,3 +60,31 @@ script = SubResource("GDScript_qbuug")
 
 [node name="Gun2D" parent="Mesh/GunWielder" instance=ExtResource("4_qdypo")]
 position = Vector2(24, 4)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="UI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="BloodTitle" type="Label" parent="UI/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 10
+text = "Parasite Blood:"
+
+[node name="BloodCount" type="Label" parent="UI/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "10000"

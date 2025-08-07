@@ -28,6 +28,12 @@ stop_distance = 128.0
 priority = 1
 metadata/_custom_type_script = "uid://djgq3pop1uygr"
 
+[sub_resource type="Resource" id="Resource_attk2"]
+resource_local_to_scene = true
+script = ExtResource("11_6jaef")
+priority = 3
+metadata/_custom_type_script = "uid://c0kpba4gkvv3b"
+
 [sub_resource type="Resource" id="Resource_isaxc"]
 resource_local_to_scene = true
 script = ExtResource("9_ibw54")
@@ -40,12 +46,6 @@ script = ExtResource("10_3xvfh")
 distance = 128.0
 priority = 1
 metadata/_custom_type_script = "uid://opii8bib3yra"
-
-[sub_resource type="Resource" id="Resource_attk2"]
-resource_local_to_scene = true
-script = ExtResource("11_6jaef")
-priority = 3
-metadata/_custom_type_script = "uid://c0kpba4gkvv3b"
 
 [sub_resource type="Resource" id="Resource_ly4kb"]
 resource_local_to_scene = true
