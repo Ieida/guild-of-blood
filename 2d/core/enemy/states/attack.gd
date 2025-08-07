@@ -1,6 +1,8 @@
 class_name EnemyStateAttack extends State
 
 
+@export var lunge_velocity_x: float = 256.
+@export var lunge_velocity_y: float = 128.
 var can_attack: bool = true
 
 
@@ -19,7 +21,10 @@ func enter():
 	var tpos: Vector2 = root.target.global_position
 	var rpos: Vector2 = root.global_position
 	tpos.y = rpos.y
-	root.velocity += Vector2.UP * 128.
+	root.velocity.y -= lunge_velocity_y
+	if absf(root.velocity.x) <= lunge_velocity_x:
+		var d: float = 1.0 if tpos.x > rpos.x else -1.0
+		root.velocity.x = d * lunge_velocity_x
 	root.hitbox.active = true
 	print("enemy entered attack state")
 

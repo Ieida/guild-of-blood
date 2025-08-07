@@ -14,6 +14,8 @@
 
 [sub_resource type="Resource" id="Resource_qpd5a"]
 script = ExtResource("6_j8syg")
+lunge_velocity_x = 256.0
+lunge_velocity_y = 128.0
 priority = 2
 metadata/_custom_type_script = "uid://dvvejqb1syxl7"
 
