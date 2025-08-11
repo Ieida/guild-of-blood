@@ -15,7 +15,7 @@ signal landed
 @onready var hitbox: Hitbox2D = $Hitbox2D
 @onready var hurtbox: Hurtbox2D = $Hurtbox2D
 @onready var mesh: MeshInstance2D = $Mesh
-@onready var target: Player2D = get_node(^"../../Player2D")
+@onready var visionbox: Visionbox2D = $Visionbox2D
 var attack_cooldown_start_time: float
 var can_move: bool = true
 

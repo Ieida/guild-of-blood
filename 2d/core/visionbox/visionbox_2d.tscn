@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://38h6qrrefjac"]
+
+[ext_resource type="Script" uid="uid://bt4o7if0yc6qy" path="res://2d/core/visionbox/visionbox_2d.gd" id="1_5o8iu"]
+
+[node name="Visionbox2D" type="Area2D"]
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+script = ExtResource("1_5o8iu")

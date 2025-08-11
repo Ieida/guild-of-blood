@@ -1,0 +1,97 @@
+[gd_scene load_steps=19 format=3 uid="uid://dtwtapx0s1f3q"]
+
+[ext_resource type="PackedScene" uid="uid://s40v113gcf3e" path="res://2d/core/enemy/enemy_2d.tscn" id="1_60qd3"]
+[ext_resource type="Script" uid="uid://dnxtbvhmuuo3c" path="res://core/scripts/state_machine.gd" id="2_ba2ng"]
+[ext_resource type="Script" uid="uid://rl13pfkc2x4u" path="res://core/scripts/state.gd" id="3_0ya03"]
+[ext_resource type="Script" uid="uid://dvvejqb1syxl7" path="res://2d/enemies/crab/states/attack.gd" id="4_hm6ib"]
+[ext_resource type="Script" uid="uid://djgq3pop1uygr" path="res://2d/core/enemy/states/chase.gd" id="5_0noal"]
+[ext_resource type="Script" uid="uid://c0kpba4gkvv3b" path="res://2d/core/enemy/states/die.gd" id="6_c41ei"]
+[ext_resource type="Script" uid="uid://coh1hf2qw8v3m" path="res://2d/core/enemy/states/idle.gd" id="7_mxxl3"]
+[ext_resource type="Script" uid="uid://opii8bib3yra" path="res://2d/enemies/crab/states/run.gd" id="8_gpumc"]
+[ext_resource type="Script" uid="uid://cr78h78gsyfpi" path="res://core/scripts/health.gd" id="10_8ikum"]
+
+[sub_resource type="Resource" id="Resource_7xwcb"]
+resource_local_to_scene = true
+script = ExtResource("4_hm6ib")
+lunge_velocity_x = 256.0
+lunge_velocity_y = 128.0
+priority = 2
+metadata/_custom_type_script = "uid://dvvejqb1syxl7"
+
+[sub_resource type="Resource" id="Resource_bghbt"]
+resource_local_to_scene = true
+script = ExtResource("5_0noal")
+stop_distance = 128.0
+priority = 1
+metadata/_custom_type_script = "uid://djgq3pop1uygr"
+
+[sub_resource type="Resource" id="Resource_6842y"]
+resource_local_to_scene = true
+script = ExtResource("6_c41ei")
+priority = 3
+metadata/_custom_type_script = "uid://c0kpba4gkvv3b"
+
+[sub_resource type="Resource" id="Resource_relq4"]
+resource_local_to_scene = true
+script = ExtResource("7_mxxl3")
+priority = 0
+metadata/_custom_type_script = "uid://coh1hf2qw8v3m"
+
+[sub_resource type="Resource" id="Resource_ba2ng"]
+resource_local_to_scene = true
+script = ExtResource("8_gpumc")
+distance = 256.0
+priority = 1
+metadata/_custom_type_script = "uid://opii8bib3yra"
+
+[sub_resource type="Resource" id="Resource_0ya03"]
+resource_local_to_scene = true
+script = ExtResource("2_ba2ng")
+props = Dictionary[StringName, Variant]({
+&"is_attack_on_cd": false
+})
+states = Dictionary[StringName, ExtResource("3_0ya03")]({
+&"attack": SubResource("Resource_7xwcb"),
+&"chase": SubResource("Resource_bghbt"),
+&"die": SubResource("Resource_6842y"),
+&"idle": SubResource("Resource_relq4"),
+&"run": SubResource("Resource_ba2ng")
+})
+priority = 0
+metadata/_custom_type_script = "uid://dnxtbvhmuuo3c"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hm6ib"]
+resource_local_to_scene = true
+size = Vector2(24, 36)
+
+[sub_resource type="Resource" id="Resource_x4vt3"]
+resource_local_to_scene = true
+script = ExtResource("10_8ikum")
+max_points = 100.0
+points = 100.0
+metadata/_custom_type_script = "uid://cr78h78gsyfpi"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0noal"]
+resource_local_to_scene = true
+radius = 256.0
+
+[node name="Crab" instance=ExtResource("1_60qd3")]
+state_machine = SubResource("Resource_0ya03")
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("RectangleShape2D_hm6ib")
+
+[node name="Hurtbox2D" parent="." index="1"]
+health = SubResource("Resource_x4vt3")
+
+[node name="CollisionShape2D" parent="Hurtbox2D" index="0"]
+shape = SubResource("RectangleShape2D_hm6ib")
+
+[node name="CollisionShape2D" parent="Hitbox2D" index="0"]
+shape = SubResource("RectangleShape2D_hm6ib")
+
+[node name="CollisionShape2D" parent="Visionbox2D" index="0"]
+shape = SubResource("CircleShape2D_0noal")
+
+[node name="DropSpawner2D" parent="." index="5"]
+amount = 5

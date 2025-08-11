@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://b88kivl1j87ay" path="res://2d/core/drop/drop_2d.tscn" id="1_gyu1a"]
 
 [node name="ParasiteBlood" instance=ExtResource("1_gyu1a")]
+attract_velocity = 512.0
 attractor_tags = Array[StringName]([&"player"])
 
 [node name="Mesh" parent="." index="1"]

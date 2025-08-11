@@ -21,6 +21,7 @@ func _change_active_state(to: StringName):
 	active_state_name = to
 	s.is_active = true
 	s.enter()
+	print("state changed to %s" % to)
 
 
 #region Custom properties

@@ -18,7 +18,7 @@ func enter():
 	root.attack_cooldown_start_time = GameUtils.time
 	can_attack = false
 	machine.sep(&"is_attack_on_cd", true)
-	var tpos: Vector2 = root.target.global_position
+	var tpos: Vector2 = root.visionbox.target.global_position
 	var rpos: Vector2 = root.global_position
 	tpos.y = rpos.y
 	root.velocity.y -= lunge_velocity_y
@@ -30,9 +30,10 @@ func enter():
 
 func evaluate() -> bool:
 	if not can_attack: return false
-	if not root.target: return false
+	var tgt: Hurtbox2D = root.visionbox.target
+	if not tgt: return false
 	if machine.gep(&"is_attack_on_cd"): return false
-	var diff: Vector2 = root.target.global_position - root.global_position
+	var diff: Vector2 = tgt.global_position - root.global_position
 	if absf(diff.x) > root.attack_distance: return false
 	return true
 

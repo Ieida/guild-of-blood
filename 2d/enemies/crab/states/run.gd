@@ -5,16 +5,17 @@ class_name EnemyStateRun extends State
 
 
 func evaluate() -> bool:
-	if not root.target: return false
+	var tgt: Hurtbox2D = root.visionbox.target
+	if not tgt: return false
 	if not machine.gep(&"is_attack_on_cd"): return false
-	var diff: Vector2 = root.target.global_position - root.global_position
+	var diff: Vector2 = tgt.global_position - root.global_position
 	if absf(diff.x) > distance: return false
 	return true
 
 
 func run_physics(delta: float):
 	if root.is_on_floor():
-		var tpos: Vector2 = root.target.global_position
+		var tpos: Vector2 = root.visionbox.target.global_position
 		var rpos: Vector2 = root.global_position
 		if absf(tpos.x - rpos.x) > distance:
 			root.velocity.x = move_toward(

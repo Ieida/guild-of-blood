@@ -1,67 +1,12 @@
-[gd_scene load_steps=19 format=4 uid="uid://cnwh2ow3x0j8r"]
+[gd_scene load_steps=8 format=4 uid="uid://cnwh2ow3x0j8r"]
 
 [ext_resource type="PackedScene" uid="uid://cnjtvl45aqxb7" path="res://2d/core/level/level_2d.tscn" id="1_b54cj"]
 [ext_resource type="PackedScene" uid="uid://cf3adykhk662m" path="res://2d/nodes/player/player_2d.tscn" id="2_525th"]
 [ext_resource type="TileSet" uid="uid://26un0yc34etd" path="res://2d/tilsets/def_tileset.tres" id="2_eayre"]
-[ext_resource type="PackedScene" uid="uid://s40v113gcf3e" path="res://2d/core/enemy/enemy_2d.tscn" id="3_2sgvi"]
 [ext_resource type="PackedScene" uid="uid://o68ftpj23dau" path="res://2d/core/enemy_spawner/enemy_spawner_2d.tscn" id="3_u0x1i"]
-[ext_resource type="Script" uid="uid://dnxtbvhmuuo3c" path="res://core/scripts/state_machine.gd" id="5_wjp0v"]
-[ext_resource type="Script" uid="uid://rl13pfkc2x4u" path="res://core/scripts/state.gd" id="6_oh2e6"]
-[ext_resource type="Script" uid="uid://dvvejqb1syxl7" path="res://2d/core/enemy/states/attack.gd" id="7_o8y43"]
-[ext_resource type="Script" uid="uid://djgq3pop1uygr" path="res://2d/core/enemy/states/chase.gd" id="8_3vbp3"]
-[ext_resource type="Script" uid="uid://coh1hf2qw8v3m" path="res://2d/core/enemy/states/idle.gd" id="9_ibw54"]
-[ext_resource type="Script" uid="uid://opii8bib3yra" path="res://2d/core/enemy/states/run.gd" id="10_3xvfh"]
-[ext_resource type="Script" uid="uid://c0kpba4gkvv3b" path="res://2d/core/enemy/states/die.gd" id="11_6jaef"]
-
-[sub_resource type="Resource" id="Resource_sx21p"]
-resource_local_to_scene = true
-script = ExtResource("7_o8y43")
-lunge_velocity_x = 256.0
-lunge_velocity_y = 128.0
-priority = 2
-metadata/_custom_type_script = "uid://dvvejqb1syxl7"
-
-[sub_resource type="Resource" id="Resource_o4uth"]
-resource_local_to_scene = true
-script = ExtResource("8_3vbp3")
-stop_distance = 128.0
-priority = 1
-metadata/_custom_type_script = "uid://djgq3pop1uygr"
-
-[sub_resource type="Resource" id="Resource_attk2"]
-resource_local_to_scene = true
-script = ExtResource("11_6jaef")
-priority = 3
-metadata/_custom_type_script = "uid://c0kpba4gkvv3b"
-
-[sub_resource type="Resource" id="Resource_isaxc"]
-resource_local_to_scene = true
-script = ExtResource("9_ibw54")
-priority = 0
-metadata/_custom_type_script = "uid://coh1hf2qw8v3m"
-
-[sub_resource type="Resource" id="Resource_4sf3a"]
-resource_local_to_scene = true
-script = ExtResource("10_3xvfh")
-distance = 128.0
-priority = 1
-metadata/_custom_type_script = "uid://opii8bib3yra"
-
-[sub_resource type="Resource" id="Resource_ly4kb"]
-resource_local_to_scene = true
-script = ExtResource("5_wjp0v")
-props = Dictionary[StringName, Variant]({
-&"is_attack_on_cd": false
-})
-states = Dictionary[StringName, ExtResource("6_oh2e6")]({
-&"attack": SubResource("Resource_sx21p"),
-&"chase": SubResource("Resource_o4uth"),
-&"die": SubResource("Resource_attk2"),
-&"idle": SubResource("Resource_isaxc"),
-&"run": SubResource("Resource_4sf3a")
-})
-priority = 0
-metadata/_custom_type_script = "uid://dnxtbvhmuuo3c"
+[ext_resource type="PackedScene" uid="uid://dtwtapx0s1f3q" path="res://2d/enemies/crab/crab.tscn" id="4_3vbp3"]
+[ext_resource type="PackedScene" uid="uid://dg1xn1q1hkl07" path="res://2d/enemies/mimic/mimic.tscn" id="4_o8y43"]
+[ext_resource type="PackedScene" uid="uid://caag2kx17308c" path="res://2d/nodes/gd_bot/gd_bot.tscn" id="13_3vbp3"]
 
 [node name="Prototype" instance=ExtResource("1_b54cj")]
 
@@ -83,16 +28,20 @@ tile_map_data = PackedByteArray("AAD8/wAAAAAAAAAAAAD8/wEAAAAAAAAAAAD9/wAAAAAAAAA
 tile_set = ExtResource("2_eayre")
 
 [node name="EnemySpawner2D" parent="Nodes/Spawners" index="0" instance=ExtResource("3_u0x1i")]
+process_mode = 4
 position = Vector2(-138, -217)
+enemy_scene = ExtResource("4_3vbp3")
 max_enemies = 1
 
 [node name="EnemySpawner2D2" parent="Nodes/Spawners" index="1" instance=ExtResource("3_u0x1i")]
 position = Vector2(642, -294)
+enemy_scene = ExtResource("4_o8y43")
 max_enemies = 1
 
-[node name="Enemy2D" parent="Nodes/Enemies" index="0" instance=ExtResource("3_2sgvi")]
-position = Vector2(183, -18)
-state_machine = SubResource("Resource_ly4kb")
-
-[node name="Player2D" parent="Nodes" index="3" instance=ExtResource("2_525th")]
+[node name="Player2D" parent="Nodes" index="4" instance=ExtResource("2_525th")]
 position = Vector2(0, -32)
+
+[node name="GDBot" parent="Nodes" index="5" instance=ExtResource("13_3vbp3")]
+position = Vector2(-253, -96)
+scale = Vector2(0.1, 0.1)
+is_waving = true
