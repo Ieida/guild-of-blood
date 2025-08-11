@@ -18,7 +18,7 @@ General/is_memory_tracking_enabled=false
 "Software Format/speaker_mode"=3
 "Software Format/raw_speaker_count"=0
 General/default_listener_count=1
-General/banks_path="res://fmod/banks"
+General/banks_path="res://fmod/banks/Bank"
 General/should_load_by_name=false
 DSP/dsp_buffer_size=512
 DSP/dsp_buffer_count=4
@@ -36,6 +36,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 GameUtils="*res://core/autoloads/game_utils.gd"
+FmodManager="*res://addons/fmod/FmodManager.gd"
 
 [display]
 
@@ -44,6 +45,10 @@ window/size/viewport_height=360
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 window/stretch/scale_mode="integer"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/fmod/plugin.cfg")
 
 [file_customization]
 
