@@ -45,3 +45,5 @@ position = Vector2(0, -32)
 position = Vector2(-253, -96)
 scale = Vector2(0.1, 0.1)
 is_waving = true
+
+[node name="FmodBankLoader" type="FmodBankLoader" parent="." index="3"]
