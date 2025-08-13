@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b06y6x0b4eq0r"]
+
+[ext_resource type="Script" uid="uid://bg3ldba18hpi0" path="res://2d/core/footstep_sfx_player/footstep_sfx_player.gd" id="1_h7q82"]
+
+[node name="FootstepSFXPlayer" type="Node2D"]
+script = ExtResource("1_h7q82")

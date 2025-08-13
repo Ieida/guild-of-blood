@@ -11,6 +11,9 @@ func evaluate() -> bool:
 
 
 func run_physics(delta: float):
+	if not root.visionbox.target:
+		machine._exit_active_state()
+		return
 	var tpos: Vector2 = root.visionbox.target.global_position
 	var rpos: Vector2 = root.global_position
 	if absf(tpos.x - rpos.x) <= stop_distance: return

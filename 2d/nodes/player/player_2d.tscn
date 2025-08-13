@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cf3adykhk662m"]
+[gd_scene load_steps=13 format=3 uid="uid://cf3adykhk662m"]
 
 [ext_resource type="Script" uid="uid://eosbyt53cdon" path="res://2d/nodes/player/player_2d.gd" id="1_p1v1k"]
 [ext_resource type="PackedScene" uid="uid://dgs8cyai8su52" path="res://2d/nodes/follow_camera/follow_camera_2d.tscn" id="2_8i7pm"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ojejnbl5hnrv" path="res://2d/core/gun/gun_2d.tscn" id="4_qdypo"]
 [ext_resource type="PackedScene" uid="uid://dgxrxfkv82cxb" path="res://2d/core/blood_collector/blood_collector_2d.tscn" id="5_ve4yu"]
 [ext_resource type="PackedScene" uid="uid://caag2kx17308c" path="res://2d/nodes/gd_bot/gd_bot.tscn" id="7_n3c4a"]
+[ext_resource type="PackedScene" uid="uid://b06y6x0b4eq0r" path="res://2d/core/footstep_sfx_player/footstep_sfx_player.tscn" id="8_0b3mo"]
 [ext_resource type="PackedScene" uid="uid://baq2aafbca7qn" path="res://ui/hud/hud.tscn" id="8_gfh5l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xltlp"]
@@ -66,6 +67,12 @@ position = Vector2(16, 4)
 [node name="GDBot" parent="Mesh" instance=ExtResource("7_n3c4a")]
 visible = false
 scale = Vector2(0.1, 0.1)
+
+[node name="FmodBankLoader" type="FmodBankLoader" parent="."]
+bank_paths = ["res://fmodbanks/Desktop/Master.strings.bank", "res://fmodbanks/Desktop/Master.bank", "res://fmodbanks/Desktop/Test bank.bank"]
+
+[node name="FootstepSFX" parent="." instance=ExtResource("8_0b3mo")]
+position = Vector2(0, 32)
 
 [node name="FmodListener2D" type="FmodListener2D" parent="."]
 

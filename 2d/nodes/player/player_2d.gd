@@ -1,6 +1,11 @@
 class_name Player2D extends CharacterBody2D
 
 
+signal jumped
+signal landed
+signal stopped_moving_on_floor
+
+
 @export var acceleration: float = 512.
 @export var deceleration: float = 256.
 @export var gravity: float = 313.6
@@ -11,6 +16,7 @@ class_name Player2D extends CharacterBody2D
 @onready var hurtbox: Hurtbox2D = $Hurtbox2D
 @onready var mesh: MeshInstance2D = $Mesh
 @onready var gdbot: GDBot = $Mesh/GDBot
+var just_landed: bool
 var modulate_tween: Tween
 
 
@@ -33,10 +39,14 @@ func _on_modulate_tween_finished():
 
 
 func _physics_process(delta: float) -> void:
+	if just_landed: just_landed = false
+	var was_on_floor: bool = is_on_floor()
+	var was_moving_on_floor: bool = is_on_floor() and not is_zero_approx(velocity.x)
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	elif Input.is_action_pressed(&"jump"):
 		velocity.y = -sqrt(2. * absf(gravity) * jump_height)
+		jumped.emit()
 	var input: float = Input.get_axis(&"move_left", &"move_right")
 	var motion: float = input * speed
 	if not is_zero_approx(input):
@@ -48,6 +58,13 @@ func _physics_process(delta: float) -> void:
 	gdbot.is_running = not is_zero_approx(input)
 	if not is_zero_approx(input):
 		mesh.scale.x = 1.0 if input > 0. else -1.
+	# Landed
+	if not was_on_floor and is_on_floor():
+		just_landed = true
+		landed.emit()
+	# Stopped moving on floor
+	if was_moving_on_floor and is_on_floor() and is_zero_approx(velocity.x):
+		stopped_moving_on_floor.emit()
 
 
 func _ready() -> void:

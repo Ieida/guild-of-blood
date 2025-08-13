@@ -36,6 +36,9 @@ func exit():
 
 
 func run_physics(delta: float):
+	if not root.visionbox.target:
+		machine._exit_active_state()
+		return
 	var t: float = GameUtils.time
 	var et: float = t - attack_start_time
 	var iet: float = t - interval_start_time

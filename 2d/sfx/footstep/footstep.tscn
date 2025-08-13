@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxnxy2nwqvlbv"]
+
+[ext_resource type="Script" uid="uid://b4l8w82bxeax5" path="res://2d/core/sfx/sfx.gd" id="1_2jn2b"]
+
+[node name="Footstep" type="FmodEventEmitter2D"]
+event_name = "event:/Steps TEST"
+event_guid = "{a15e4a55-bfbe-45e0-86d6-7c6ac02a97a8}"
+fmod_parameters/Steptypes/id = 834040893286114423
+fmod_parameters/Steptypes = 0.1
+fmod_parameters/Steptypes/variant_type = 3
+top_level = true
+script = ExtResource("1_2jn2b")
