@@ -50,6 +50,6 @@ is_waving = true
 bank_paths = ["res://fmodbanks/Desktop/Test bank.bank"]
 
 [node name="FmodEventEmitter2D" type="FmodEventEmitter2D" parent="." index="4"]
-event_name = "event:/BG MUSIC"
+event_name = "event:/TEST BG MUSIC"
 event_guid = "{2e69de89-61e5-4a52-b8af-6e8496091b54}"
 autoplay = true
