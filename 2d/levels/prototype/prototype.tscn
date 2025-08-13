@@ -47,3 +47,9 @@ scale = Vector2(0.1, 0.1)
 is_waving = true
 
 [node name="FmodBankLoader" type="FmodBankLoader" parent="." index="3"]
+bank_paths = ["res://fmodbanks/Desktop/Test bank.bank"]
+
+[node name="FmodEventEmitter2D" type="FmodEventEmitter2D" parent="." index="4"]
+event_name = "event:/BG MUSIC"
+event_guid = "{2e69de89-61e5-4a52-b8af-6e8496091b54}"
+autoplay = true

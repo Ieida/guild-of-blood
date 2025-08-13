@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://pel7hyky6rww"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_6adnx"]
+size = Vector2(32, 32)
+
+[node name="TestScene" type="Node2D"]
+
+[node name="FmodBankLoader" type="FmodBankLoader" parent="."]
+bank_paths = ["res://fmodbanks/Desktop/Test bank.bank"]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+mesh = SubResource("QuadMesh_6adnx")
+
+[node name="FmodEventEmitter2D" type="FmodEventEmitter2D" parent="MeshInstance2D"]
+event_name = "event:/BG MUSIC"
+event_guid = "{2e69de89-61e5-4a52-b8af-6e8496091b54}"
+autoplay = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="FmodListener2D" type="FmodListener2D" parent="Camera2D"]
