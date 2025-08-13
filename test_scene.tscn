@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://pel7hyky6rww"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_6adnx"]
+size = Vector2(32, 32)
+
+[node name="TestScene" type="Node2D"]
+
+[node name="FmodBankLoader" type="FmodBankLoader" parent="."]
+bank_paths = ["res://fmodbanks/Desktop/Master.strings.bank", "res://fmodbanks/Desktop/Master.bank", "res://fmodbanks/Desktop/CharacterSFX.bank"]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+mesh = SubResource("QuadMesh_6adnx")
+
+[node name="FmodEventEmitter2D" type="FmodEventEmitter2D" parent="MeshInstance2D"]
+event_name = "event:/Steps TEST"
+event_guid = "{a15e4a55-bfbe-45e0-86d6-7c6ac02a97a8}"
+autoplay = true
+fmod_parameters/Steptypes/id = 834040893286114423
+fmod_parameters/Steptypes = 0.0
+fmod_parameters/Steptypes/variant_type = 3
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="FmodListener2D" type="FmodListener2D" parent="Camera2D"]
