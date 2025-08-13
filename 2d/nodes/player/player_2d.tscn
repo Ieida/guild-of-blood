@@ -69,7 +69,7 @@ visible = false
 scale = Vector2(0.1, 0.1)
 
 [node name="FmodBankLoader" type="FmodBankLoader" parent="."]
-bank_paths = ["res://fmodbanks/Desktop/Master.strings.bank", "res://fmodbanks/Desktop/Master.bank", "res://fmodbanks/Desktop/Test bank.bank"]
+bank_paths = ["res://fmodbanks/Desktop/Master.strings.bank", "res://fmodbanks/Desktop/Master.bank", "res://fmodbanks/Desktop/CharacterSFX.bank"]
 
 [node name="FootstepSFX" parent="." instance=ExtResource("8_0b3mo")]
 position = Vector2(0, 32)
